@@ -8,7 +8,9 @@ import { ExpensesContext } from '../store/expenses-context'
 const ManageExpensesScreen = ({ route, navigation }) => {
   const expenseId = route.params?.expenseId
   const isEditing = !!expenseId
-  const { deleteExpense } = useContext(ExpensesContext)
+  const { deleteExpense, addExpense, updateExpense } = useContext(
+    ExpensesContext,
+  )
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -26,7 +28,22 @@ const ManageExpensesScreen = ({ route, navigation }) => {
   }
 
   function confirmHandler() {
-    // Add or update the expense
+    if (isEditing) {
+      // update
+      updateExpense(expenseId, {
+        description: 'New Desk (Wooden)',
+        amount: 450,
+        date: new Date(2021, 5, 12),
+      })
+    } else {
+      // add
+      addExpense({
+        description: 'New Desk (Wooden)',
+        amount: 450,
+        date: new Date(2021, 5, 12),
+      })
+    }
+    navigation.goBack()
   }
 
   return (
