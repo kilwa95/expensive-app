@@ -4,6 +4,7 @@ import IconButton from '../UI/IconButton/IconButton'
 import GlobalStyles from '../style/GlobalStyles'
 import Button from '../UI/button/Button'
 import { ExpensesContext } from '../store/expenses-context'
+import ExpenseForm from '../components/form/ExpensiveForm/ExpensiveForm'
 
 const ManageExpensesScreen = ({ route, navigation }) => {
   const expenseId = route.params?.expenseId
@@ -48,6 +49,7 @@ const ManageExpensesScreen = ({ route, navigation }) => {
 
   return (
     <View style={styles.container}>
+      <ExpenseForm />
       <View style={styles.buttons}>
         <Button style={styles.button} mode="flat" onPress={cancelHandler}>
           cancel
