@@ -13,7 +13,13 @@ const RecentExpensesScreen = () => {
     return expense.date > date7DaysAgo
   })
 
-  return <ExpensesOutput items={recentExpensive} expensesPeriod="Last 7 days" />
+  return (
+    <ExpensesOutput
+      items={recentExpensive}
+      expensesPeriod="Last 7 days"
+      fallBackText="No Expenses registered for the last 7 days"
+    />
+  )
 }
 
 export default RecentExpensesScreen
